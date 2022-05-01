@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./card.scss";
+import "./todayCard.scss";
 import ReactAnimatedWeather from "react-animated-weather";
-
-export default function Card() {
+export default function TodayCard() {
   const [icons, setIcons] = useState();
 
   const data = [
@@ -90,24 +89,32 @@ export default function Card() {
   };
 
   useEffect(() => {
-    console.log(data[0].Temperature.Metric.Value);
+    console.log(data[0].Temperature.Metric.Value)
     ManageIcon(data[0].WeatherIcon);
   }, []);
-  return (
-    <div className="ForecastDay">
-      <div className="WeatherForecastDay">{ExtractDate(data[0]?.LocalObservationDateTime)}</div>
-      <div className="WeatherForecastIcon">
-        <ReactAnimatedWeather
-          icon={icons && icons.icon}
-          color={icons?.color}
-          size={80}
-        />
-      </div>
-      <div className="WeatherForecastTemp">
-        <span className="WeatherForecastTemp-min">{13}🌡</span>
-      </div>
 
-      <div className="WeatherForecastDescription">{"sdsd"}</div>
+  return (
+    <div className="ForecastToday">
+      <div className="left">
+        <div className="WeatherForecastIcon">
+          <ReactAnimatedWeather
+            icon={icons && icons.icon}
+            color={icons?.color}
+            size={240}
+          />
+        </div>
+      </div>
+      <div className="right">
+        <div className="WeatherForecastDay">
+          {ExtractDate(data[0]?.LocalObservationDateTime)}
+        </div>
+
+        <div className="WeatherForecastTemp">
+          <span>{data[0].Temperature.Metric.Value}🌡</span>
+        </div>
+
+        <div className="WeatherForecastDescription">{data[0].WeatherText}</div>
+      </div>
     </div>
   );
 }

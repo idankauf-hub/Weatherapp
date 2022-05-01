@@ -1,0 +1,43 @@
+.ForecastToday {
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 3px 5px 10px 1px rgba(0, 0, 0, 0.47);
+    padding: 10px;
+    width: 830px;
+    height: 350px;
+    border-radius: 15px;
+    background-color: rgba(255,255,255, 0.4);
+    margin-right: 1%;
+    text-align: center;
+    display: flex;
+
+    
+  }
+ 
+  .left{
+    flex: 0.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .right{
+      flex:1;
+      margin-top: 5%;
+      justify-content: center;
+      align-items: center;
+      .WeatherForecastDay {
+        font-weight: 800;
+        padding: 6px;
+        font-size: 56px;
+      }
+      .WeatherForecastTemp {
+          margin-top: 15px;
+        font-size: 28px;
+        font-weight: 400;
+      }
+ 
+      .WeatherForecastDescription {
+        padding-bottom: 2px;
+        font-size: 28px;
+      }
+  }
