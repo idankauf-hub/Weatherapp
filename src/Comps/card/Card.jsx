@@ -10,18 +10,6 @@ export default function Card() {
         animate: true
       };
   return (
-    // <div className="card">
-    //   <div className="img">
-        // <ReactAnimatedWeather
-        //   icon={defaults.icon}
-        //   color={defaults.color}
-        //   size={defaults.size}
-        //   animate={defaults.animate}
-          
-        // />
-    //   </div>
-    //   <div className="cardInfo">Info</div>
-    // </div>
     <div className="ForecastDay">
     <div className="WeatherForecastDay">{"Sat"}</div>
     <div className="WeatherForecastIcon">
