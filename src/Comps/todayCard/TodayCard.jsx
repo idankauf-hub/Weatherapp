@@ -6,13 +6,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../state/index";
 import axios from "axios";
-const apiKey = "QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ";
+// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
+
+const apiKey = "7UDoiGRdglFmoIqh7Y1eueFaSlscl787";
 
 export default function TodayCard() {
   const state = useSelector((state) => state);
   // const dispatch = useDispatch();
   // const {storeLocation,storeFavorite,storeKey} =bindActionCreators(actionCreators,dispatch)
-  console.log(state.location.cityKey);
   const [icons, setIcons] = useState({
     icon: "CLEAR_DAY",
     color: "goldenrod",
@@ -78,13 +80,11 @@ export default function TodayCard() {
         )
         .then((res) => {
           const location = res.data;
-          console.log(location);
           setData(location);
           ManageIcon(location[0].WeatherIcon)
           // storeLocation(location[0].LocalizedName)
           // storeKey(location[0].Key)
           //setLocation({ persons });
-          //console.log(location)
         });
     }
   };

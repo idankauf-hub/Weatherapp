@@ -4,12 +4,11 @@ import Card from "./Card";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-const apiKey = "QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ";
+const apiKey = "7UDoiGRdglFmoIqh7Y1eueFaSlscl787";
 
 export default function Cards() {
   const state = useSelector((state) => state);
   const [loading, setLoading] = useState(false);
-  console.log(state);
   const [data, setData] = useState([
     {
       Headline: {
@@ -193,13 +192,11 @@ export default function Cards() {
         )
         .then((res) => {
           const location = res.data;
-          console.log(location[0]);
           setData(location);
           setLoading(true);
           // storeLocation(location[0].LocalizedName)
           // storeKey(location[0].Key)
           //setLocation({ persons });
-          //console.log(location)
         });
     }
   };

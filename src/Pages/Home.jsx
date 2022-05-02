@@ -14,7 +14,8 @@ import IconButton from "@mui/material/IconButton";
 import Autocomplete from "@mui/material/Autocomplete";
 import SearchIcon from "@mui/icons-material/Search";
 import Cards from "../Comps/card/Cards";
-
+import { ToastContainer, toast } from "react-toastify";
+import BasicModal from "../Comps/basicModal/BasicModal";
 export default function Home() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -23,167 +24,175 @@ export default function Home() {
     dispatch
   );
 
-  const apiKey = "QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ";
+  const apiKey = "7UDoiGRdglFmoIqh7Y1eueFaSlscl787";
   const [city, setCity] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [error, setError] = useState(false);
+  const [errorText, setErrorText] = useState("");
+  const [data, setData] = useState(["Enter"]);
 
-  const data = [
-    {
-      Version: 1,
-      Key: "215854",
-      Type: "City",
-      Rank: 31,
-      LocalizedName: "Tel Aviv",
-      Country: {
-        ID: "IL",
-        LocalizedName: "Israel",
-      },
-      AdministrativeArea: {
-        ID: "TA",
-        LocalizedName: "Tel Aviv",
-      },
-    },
-    {
-      Version: 1,
-      Key: "3431644",
-      Type: "City",
-      Rank: 45,
-      LocalizedName: "Telanaipura",
-      Country: {
-        ID: "ID",
-        LocalizedName: "Indonesia",
-      },
-      AdministrativeArea: {
-        ID: "JA",
-        LocalizedName: "Jambi",
-      },
-    },
-    {
-      Version: 1,
-      Key: "300558",
-      Type: "City",
-      Rank: 45,
-      LocalizedName: "Telok Blangah New Town",
-      Country: {
-        ID: "SG",
-        LocalizedName: "Singapore",
-      },
-      AdministrativeArea: {
-        ID: "05",
-        LocalizedName: "South West",
-      },
-    },
-    {
-      Version: 1,
-      Key: "325876",
-      Type: "City",
-      Rank: 51,
-      LocalizedName: "Telford",
-      Country: {
-        ID: "GB",
-        LocalizedName: "United Kingdom",
-      },
-      AdministrativeArea: {
-        ID: "TFW",
-        LocalizedName: "Telford and Wrekin",
-      },
-    },
-    {
-      Version: 1,
-      Key: "169072",
-      Type: "City",
-      Rank: 51,
-      LocalizedName: "Telavi",
-      Country: {
-        ID: "GE",
-        LocalizedName: "Georgia",
-      },
-      AdministrativeArea: {
-        ID: "KA",
-        LocalizedName: "Kakheti",
-      },
-    },
-    {
-      Version: 1,
-      Key: "230611",
-      Type: "City",
-      Rank: 51,
-      LocalizedName: "Telsiai",
-      Country: {
-        ID: "LT",
-        LocalizedName: "Lithuania",
-      },
-      AdministrativeArea: {
-        ID: "TE",
-        LocalizedName: "Telšiai",
-      },
-    },
-    {
-      Version: 1,
-      Key: "2723742",
-      Type: "City",
-      Rank: 55,
-      LocalizedName: "Telégrafo",
-      Country: {
-        ID: "BR",
-        LocalizedName: "Brazil",
-      },
-      AdministrativeArea: {
-        ID: "PA",
-        LocalizedName: "Pará",
-      },
-    },
-    {
-      Version: 1,
-      Key: "186933",
-      Type: "City",
-      Rank: 55,
-      LocalizedName: "Tela",
-      Country: {
-        ID: "HN",
-        LocalizedName: "Honduras",
-      },
-      AdministrativeArea: {
-        ID: "AT",
-        LocalizedName: "Atlántida",
-      },
-    },
-    {
-      Version: 1,
-      Key: "3453754",
-      Type: "City",
-      Rank: 55,
-      LocalizedName: "Telaga Asih",
-      Country: {
-        ID: "ID",
-        LocalizedName: "Indonesia",
-      },
-      AdministrativeArea: {
-        ID: "JB",
-        LocalizedName: "West Java",
-      },
-    },
-    {
-      Version: 1,
-      Key: "3453755",
-      Type: "City",
-      Rank: 55,
-      LocalizedName: "Telagamurni",
-      Country: {
-        ID: "ID",
-        LocalizedName: "Indonesia",
-      },
-      AdministrativeArea: {
-        ID: "JB",
-        LocalizedName: "West Java",
-      },
-    },
-  ];
+  // const data = [
+  //   {
+  //     Version: 1,
+  //     Key: "215854",
+  //     Type: "City",
+  //     Rank: 31,
+  //     LocalizedName: "Tel Aviv",
+  //     Country: {
+  //       ID: "IL",
+  //       LocalizedName: "Israel",
+  //     },
+  //     AdministrativeArea: {
+  //       ID: "TA",
+  //       LocalizedName: "Tel Aviv",
+  //     },
+  //   },
+  //   {
+  //     Version: 1,
+  //     Key: "3431644",
+  //     Type: "City",
+  //     Rank: 45,
+  //     LocalizedName: "Telanaipura",
+  //     Country: {
+  //       ID: "ID",
+  //       LocalizedName: "Indonesia",
+  //     },
+  //     AdministrativeArea: {
+  //       ID: "JA",
+  //       LocalizedName: "Jambi",
+  //     },
+  //   },
+  //   {
+  //     Version: 1,
+  //     Key: "300558",
+  //     Type: "City",
+  //     Rank: 45,
+  //     LocalizedName: "Telok Blangah New Town",
+  //     Country: {
+  //       ID: "SG",
+  //       LocalizedName: "Singapore",
+  //     },
+  //     AdministrativeArea: {
+  //       ID: "05",
+  //       LocalizedName: "South West",
+  //     },
+  //   },
+  //   {
+  //     Version: 1,
+  //     Key: "325876",
+  //     Type: "City",
+  //     Rank: 51,
+  //     LocalizedName: "Telford",
+  //     Country: {
+  //       ID: "GB",
+  //       LocalizedName: "United Kingdom",
+  //     },
+  //     AdministrativeArea: {
+  //       ID: "TFW",
+  //       LocalizedName: "Telford and Wrekin",
+  //     },
+  //   },
+  //   {
+  //     Version: 1,
+  //     Key: "169072",
+  //     Type: "City",
+  //     Rank: 51,
+  //     LocalizedName: "Telavi",
+  //     Country: {
+  //       ID: "GE",
+  //       LocalizedName: "Georgia",
+  //     },
+  //     AdministrativeArea: {
+  //       ID: "KA",
+  //       LocalizedName: "Kakheti",
+  //     },
+  //   },
+  //   {
+  //     Version: 1,
+  //     Key: "230611",
+  //     Type: "City",
+  //     Rank: 51,
+  //     LocalizedName: "Telsiai",
+  //     Country: {
+  //       ID: "LT",
+  //       LocalizedName: "Lithuania",
+  //     },
+  //     AdministrativeArea: {
+  //       ID: "TE",
+  //       LocalizedName: "Telšiai",
+  //     },
+  //   },
+  //   {
+  //     Version: 1,
+  //     Key: "2723742",
+  //     Type: "City",
+  //     Rank: 55,
+  //     LocalizedName: "Telégrafo",
+  //     Country: {
+  //       ID: "BR",
+  //       LocalizedName: "Brazil",
+  //     },
+  //     AdministrativeArea: {
+  //       ID: "PA",
+  //       LocalizedName: "Pará",
+  //     },
+  //   },
+  //   {
+  //     Version: 1,
+  //     Key: "186933",
+  //     Type: "City",
+  //     Rank: 55,
+  //     LocalizedName: "Tela",
+  //     Country: {
+  //       ID: "HN",
+  //       LocalizedName: "Honduras",
+  //     },
+  //     AdministrativeArea: {
+  //       ID: "AT",
+  //       LocalizedName: "Atlántida",
+  //     },
+  //   },
+  //   {
+  //     Version: 1,
+  //     Key: "3453754",
+  //     Type: "City",
+  //     Rank: 55,
+  //     LocalizedName: "Telaga Asih",
+  //     Country: {
+  //       ID: "ID",
+  //       LocalizedName: "Indonesia",
+  //     },
+  //     AdministrativeArea: {
+  //       ID: "JB",
+  //       LocalizedName: "West Java",
+  //     },
+  //   },
+  //   {
+  //     Version: 1,
+  //     Key: "3453755",
+  //     Type: "City",
+  //     Rank: 55,
+  //     LocalizedName: "Telagamurni",
+  //     Country: {
+  //       ID: "ID",
+  //       LocalizedName: "Indonesia",
+  //     },
+  //     AdministrativeArea: {
+  //       ID: "JB",
+  //       LocalizedName: "West Java",
+  //     },
+  //   },
+  // ];
 
   const handleSubmit = () => {
-    console.log(inputValue);
+    if (!/^[a-zA-Z]+$/.test(inputValue) || inputValue === '') {
+      setError(true);
+      setErrorText("Only English Letters")
+    } else {
+      setError(false);
+      getLocation();
+    }
     // AutoInput(inputValue);
-    getLocation();
   };
 
   const getLocation = () => {
@@ -193,20 +202,27 @@ export default function Home() {
       )
       .then((res) => {
         const location = res.data;
-        console.log(location);
-        storeLocation(location[0].LocalizedName);
-        storeKey(location[0].Key);
+        console.log(location.length);
+        if(location.length>0){
+          storeLocation(location[0].LocalizedName);
+          storeKey(location[0].Key);
+        }
+        else{
+          setError(true)
+          setErrorText("There is no city as you asked for,try again")
+        }
+
       });
   };
 
   const AutoInput = (value) => {
-    // axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${value}&language=en-us`)
-    // .then(res => {
-    //   const persons = res.data;
-    //   console.log(persons)
-    //   setLocation({ persons });
-    //   console.log(location)
-    // })
+    console.log(value);
+    axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${value}&language=en-us`)
+    .then(res => {
+      const location = res.data;
+      console.log(location)
+      setData(location)
+    })
     // axios
     //   .get(
     //     `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${value}&language=en-us`
@@ -245,7 +261,7 @@ export default function Home() {
         <Autocomplete
           freeSolo
           id="combo-box-demo"
-          options={data?.map((city1) => city1.LocalizedName)}
+          options={data?data?.map((city1) => city1.LocalizedName):[]}
           onChange={(event, newValue) => {
             //setLocation(newValue?.LocalizedName);
             console.log(city);
@@ -254,7 +270,6 @@ export default function Home() {
           onInputChange={(event, newInputValue) => {
             setInputValue(newInputValue);
             AutoInput(newInputValue);
-            console.log(newInputValue);
           }}
           getOptionLabel={(option) => option || ""}
           isOptionEqualToValue={(option, value) =>
@@ -284,6 +299,7 @@ export default function Home() {
         <TodayCard />
       </div>
       <Cards />
+      {error && <BasicModal text={errorText}/>}
     </div>
   );
 }

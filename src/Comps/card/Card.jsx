@@ -3,7 +3,6 @@ import "./card.scss";
 import ReactAnimatedWeather from "react-animated-weather";
 
 export default function Card(props) {
-  console.log(props.data)
   const [icons, setIcons] = useState();
   const [data, setData] = useState(props.data);
 
