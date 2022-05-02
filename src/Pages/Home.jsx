@@ -4,21 +4,24 @@ import "./home.scss";
 import Card from "../Comps/card/Card.jsx";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import {bindActionCreators} from "redux"
-import {actionCreators} from "../state/index"
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../state/index";
 
 import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Autocomplete from "@mui/material/Autocomplete";
 import SearchIcon from "@mui/icons-material/Search";
+import Cards from "../Comps/card/Cards";
 
 export default function Home() {
-  const state = useSelector((state)=>state);
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const {storeLocation,storeFavorite,storeKey} =bindActionCreators(actionCreators,dispatch)
+  const { storeLocation, storeFavorite, storeKey } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   const apiKey = "QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ";
   const [city, setCity] = useState([]);
@@ -180,28 +183,27 @@ export default function Home() {
   const handleSubmit = () => {
     console.log(inputValue);
     // AutoInput(inputValue);
-    getLocation()
+    getLocation();
   };
 
-  const getLocation=()=>{
-      axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${inputValue}&language=en-us`)
-    .then(res => {
-      const location = res.data;
-      console.log(location)
-      storeLocation(location[0].LocalizedName)
-      storeKey(location[0].Key)
-
-    })
+  const getLocation = () => {
+    axios
+      .get(
+        `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${inputValue}&language=en-us`
+      )
+      .then((res) => {
+        const location = res.data;
+        console.log(location);
+        storeLocation(location[0].LocalizedName);
+        storeKey(location[0].Key);
+      });
   };
 
   const AutoInput = (value) => {
-
-
     // axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${value}&language=en-us`)
     // .then(res => {
     //   const persons = res.data;
     //   console.log(persons)
-
     //   setLocation({ persons });
     //   console.log(location)
     // })
@@ -212,7 +214,6 @@ export default function Home() {
     //   .then((response) => {
     //     const persons = response.data;
     //     console.log(persons);
-
     //     setCity({ persons });
     //     console.log(city);
     //   })
@@ -244,7 +245,7 @@ export default function Home() {
         <Autocomplete
           freeSolo
           id="combo-box-demo"
-          options={data?.map(city1 => city1.LocalizedName)}
+          options={data?.map((city1) => city1.LocalizedName)}
           onChange={(event, newValue) => {
             //setLocation(newValue?.LocalizedName);
             console.log(city);
@@ -282,12 +283,7 @@ export default function Home() {
       <div className="Cards">
         <TodayCard />
       </div>
-      <div className="Cards">
-        {[...Array(5)].map((e,index)=>{
-          return <Card key={index}/>
-        
-        })}
-      </div>
+      <Cards />
     </div>
   );
 }
