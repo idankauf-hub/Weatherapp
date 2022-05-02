@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "./todayCard.scss";
 import ReactAnimatedWeather from "react-animated-weather";
-export default function TodayCard() {
-  const [icons, setIcons] = useState();
 
-  const data = [
+import { useSelector,useDispatch } from "react-redux";
+import {bindActionCreators} from "redux"
+import {actionCreators} from "../../state/index"
+import axios from "axios";
+const apiKey = "QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ";
+
+
+export default function TodayCard() {
+  const state = useSelector((state)=>state);
+  // const dispatch = useDispatch();
+  // const {storeLocation,storeFavorite,storeKey} =bindActionCreators(actionCreators,dispatch)
+  console.log(state.location.cityKey)
+  const [icons, setIcons] = useState();
+  const [data, setData] = useState([
     {
       LocalObservationDateTime: "2022-05-01T18:38:00+03:00",
       EpochTime: 1651419480,
@@ -29,7 +40,8 @@ export default function TodayCard() {
         "http://www.accuweather.com/en/tr/istanbul/318251/current-weather/318251?lang=en-us",
       Link: "http://www.accuweather.com/en/tr/istanbul/318251/current-weather/318251?lang=en-us",
     },
-  ];
+  ]);
+
 
   const ManageIcon = (iconNum) => {
     if ((iconNum >= 1 && iconNum <= 5) || iconNum == 30)
@@ -82,6 +94,21 @@ export default function TodayCard() {
       }));
   };
 
+  const getLocation=()=>{
+    if(state.location.cityKey != ""){
+      axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${state.location.cityKey}?apikey=${apiKey}&language=en-us&details=true`)
+      .then(res => {
+        const location = res.data;
+        console.log(location)
+        setData(location)
+        // storeLocation(location[0].LocalizedName)
+        // storeKey(location[0].Key)
+        //setLocation({ persons });
+        //console.log(location)
+      })
+    }
+};
+
   const ExtractDate = (value) => {
     let currentDate = new Date(value);
     let res = currentDate.getDate() + "/" + (currentDate.getMonth() + 1);
@@ -89,9 +116,14 @@ export default function TodayCard() {
   };
 
   useEffect(() => {
-    console.log(data[0].Temperature.Metric.Value)
+    getLocation()
     ManageIcon(data[0].WeatherIcon);
   }, []);
+
+  useEffect(() => {
+    //getLocation()
+    ManageIcon(data[0].WeatherIcon);
+  }, [state.location.cityKey]);
 
   return (
     <div className="ForecastToday">
@@ -107,6 +139,9 @@ export default function TodayCard() {
       <div className="right">
         <div className="WeatherForecastDay">
           {ExtractDate(data[0]?.LocalObservationDateTime)}
+        </div>
+        <div className="WeatherForecastDay">
+          {state.location.name}
         </div>
 
         <div className="WeatherForecastTemp">

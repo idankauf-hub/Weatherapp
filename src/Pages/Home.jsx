@@ -4,6 +4,10 @@ import "./home.scss";
 import Card from "../Comps/card/Card.jsx";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { useSelector,useDispatch } from "react-redux";
+
+import {bindActionCreators} from "redux"
+import {actionCreators} from "../state/index"
 
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -12,6 +16,10 @@ import Autocomplete from "@mui/material/Autocomplete";
 import SearchIcon from "@mui/icons-material/Search";
 
 export default function Home() {
+  const state = useSelector((state)=>state);
+  const dispatch = useDispatch();
+  const {storeLocation,storeFavorite,storeKey} =bindActionCreators(actionCreators,dispatch)
+
   const apiKey = "QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ";
   const [city, setCity] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -171,11 +179,23 @@ export default function Home() {
 
   const handleSubmit = () => {
     console.log(inputValue);
-    AutoInput(inputValue);
+    // AutoInput(inputValue);
+    getLocation()
   };
+
+  const getLocation=()=>{
+      axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${inputValue}&language=en-us`)
+    .then(res => {
+      const location = res.data;
+      console.log(location)
+      storeLocation(location[0].LocalizedName)
+      storeKey(location[0].Key)
+
+    })
+  };
+
   const AutoInput = (value) => {
-    console.log(value);
-    console.log(data);
+
 
     // axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${value}&language=en-us`)
     // .then(res => {
@@ -263,9 +283,10 @@ export default function Home() {
         <TodayCard />
       </div>
       <div className="Cards">
-        {[...Array(5)].map((e, i) => (
-          <Card key={i} />
-        ))}
+        {[...Array(5)].map((e,index)=>{
+          return <Card key={index}/>
+        
+        })}
       </div>
     </div>
   );

@@ -4,9 +4,7 @@ import ReactAnimatedWeather from "react-animated-weather";
 
 export default function Card() {
   const [icons, setIcons] = useState();
-  
-//http://dataservice.accuweather.com/forecasts/v1/daily/5day/318251?apikey=QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ&metric=true
-
+  //http://dataservice.accuweather.com/forecasts/v1/daily/5day/318251?apikey=QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ&metric=true
 
   const data = [
     {
@@ -241,7 +239,6 @@ export default function Card() {
   };
 
   useEffect(() => {
-    console.log(data[0].Headline.Text);
     // console.log(data[0].Temperature.Metric.Value);
     ManageIcon(data[0].DailyForecasts[0]?.Day.Icon);
   }, []);
@@ -258,7 +255,10 @@ export default function Card() {
         />
       </div>
       <div className="WeatherForecastTemp">
-        <span className="WeatherForecastTemp-min">{data[0].DailyForecasts[0]?.Temperature?.Minimum.Value}° - {data[0].DailyForecasts[0]?.Temperature?.Maximum.Value}°</span>
+        <span className="WeatherForecastTemp-min">
+          {data[0].DailyForecasts[0]?.Temperature?.Minimum.Value}° -{" "}
+          {data[0].DailyForecasts[0]?.Temperature?.Maximum.Value}°
+        </span>
       </div>
 
       <div className="WeatherForecastDescription">{data[0].Headline.Text}</div>
