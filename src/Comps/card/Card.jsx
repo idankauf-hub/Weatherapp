@@ -5,7 +5,7 @@ import ReactAnimatedWeather from "react-animated-weather";
 export default function Card(props) {
   const [icons, setIcons] = useState();
   const [data, setData] = useState(props.data);
-
+  console.log(props)
 
   const ManageIcon = (iconNum) => {
     if ((iconNum >= 1 && iconNum <= 5) || iconNum == 30)
@@ -72,6 +72,7 @@ export default function Card(props) {
     <div className="ForecastDay">
       <div className="WeatherForecastDay">
         {ExtractDate(data?.Date)}
+        {data.cityName && <h4>{data.cityName}</h4>}
       </div>
       <div className="WeatherForecastIcon">
         <ReactAnimatedWeather
@@ -82,8 +83,8 @@ export default function Card(props) {
       </div>
       <div className="WeatherForecastTemp">
         <span className="WeatherForecastTemp-min">
-          {data?.Temperature?.Minimum.Value}° -{" "}
-          {data?.Temperature?.Maximum.Value}°
+          {data?.Temperature?.Minimum?.Value}° -{" "}
+          {data?.Temperature?.Maximum?.Value}°
         </span>
       </div>
 

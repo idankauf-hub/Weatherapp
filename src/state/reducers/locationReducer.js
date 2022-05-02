@@ -11,8 +11,16 @@ const reducer = (state = initialState, action) => {
       return { ...state, name: action.payload };
     case "SetLocationKey":
       return { ...state, cityKey: action.payload };
-    case "SetFavorite":
+    case "setFavorite":
+      return {
+        ...state,
+        favoriteLocations: [...state.favoriteLocations.filter((favoriteLocation)=>{
+          return favoriteLocation.cityKey !== action.payload.cityKey
+        }), action.payload],
+      };
+    case "isFavorite":
       return { ...state, isFavorite: action.payload };
+
     default:
       return state;
   }

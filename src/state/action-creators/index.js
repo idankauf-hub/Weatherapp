@@ -18,3 +18,10 @@ export const storeFavorite = (location) => {
         payload: location
         }
 }
+
+export const isFavorite = (location) => {
+    return{
+        type:"isFavorite",
+        payload: location
+        }
+}

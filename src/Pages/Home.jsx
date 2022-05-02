@@ -1,4 +1,3 @@
-import Navbar from "../Comps/navbar/Navbar";
 import TodayCard from "../Comps/todayCard/TodayCard";
 import "./home.scss";
 import Card from "../Comps/card/Card.jsx";
@@ -16,15 +15,17 @@ import SearchIcon from "@mui/icons-material/Search";
 import Cards from "../Comps/card/Cards";
 import { ToastContainer, toast } from "react-toastify";
 import BasicModal from "../Comps/basicModal/BasicModal";
+
+const apiKey = "7UDoiGRdglFmoIqh7Y1eueFaSlscl787";
+
 export default function Home() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { storeLocation, storeFavorite, storeKey } = bindActionCreators(
+  const { storeLocation, storeFavorite, storeKey,isFavorite } = bindActionCreators(
     actionCreators,
     dispatch
   );
 
-  const apiKey = "7UDoiGRdglFmoIqh7Y1eueFaSlscl787";
   const [city, setCity] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState(false);
@@ -256,7 +257,6 @@ export default function Home() {
   };
   return (
     <div className="home">
-      <Navbar />
       <div className="input">
         <Autocomplete
           freeSolo

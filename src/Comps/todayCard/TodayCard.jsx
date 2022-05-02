@@ -6,15 +6,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../state/index";
 import axios from "axios";
-// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const apiKey = "7UDoiGRdglFmoIqh7Y1eueFaSlscl787";
 
 export default function TodayCard() {
   const state = useSelector((state) => state);
-  // const dispatch = useDispatch();
-  // const {storeLocation,storeFavorite,storeKey} =bindActionCreators(actionCreators,dispatch)
+  console.log(state)
+  const dispatch = useDispatch();
+  const { storeLocation, storeFavorite, storeKey,isFavorite } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
   const [icons, setIcons] = useState({
     icon: "CLEAR_DAY",
     color: "goldenrod",
@@ -79,9 +83,10 @@ export default function TodayCard() {
           `http://dataservice.accuweather.com/currentconditions/v1/${state.location.cityKey}?apikey=${apiKey}&language=en-us&details=true`
         )
         .then((res) => {
+          console.log(res)
           const location = res.data;
           setData(location);
-          ManageIcon(location[0].WeatherIcon)
+          ManageIcon(location[0].WeatherIcon);
           // storeLocation(location[0].LocalizedName)
           // storeKey(location[0].Key)
           //setLocation({ persons });
@@ -94,16 +99,24 @@ export default function TodayCard() {
     let res = currentDate.getDate() + "/" + (currentDate.getMonth() + 1);
     return res;
   };
+  const setFavorite = () => {
+    storeFavorite({cityKey:state.location.cityKey,cityName:state.location.name})
+    console.log(state)
+    // let currentDate = new Date(value);
+    // let res = currentDate.getDate() + "/" + (currentDate.getMonth() + 1);
+    // return res;
+  };
 
   useEffect(() => {
     getLocation();
     // if(data){ManageIcon(data[0].WeatherIcon)}
-    
   }, []);
 
   useEffect(() => {
     getLocation();
-    if(data){ManageIcon(data[0].WeatherIcon)}
+    if (data) {
+      ManageIcon(data[0].WeatherIcon);
+    }
   }, [state.location.cityKey]);
 
   if (data) {
@@ -132,10 +145,19 @@ export default function TodayCard() {
             {data[0].WeatherText}
           </div>
         </div>
+        <div
+          style={{
+            textAlign: "right",
+            justifyContent: "center",
+            alignItems:"center",
+            display:"flex"
+          }}
+        >
+          <FavoriteIcon fontSize={"large"} onClick={setFavorite}/>
+        </div>
       </div>
     );
-  }
-  else{
-    return <div>loader...</div>
+  } else {
+    return <div>loader...</div>;
   }
 }
