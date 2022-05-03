@@ -1,13 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../state/index";
 import "../Comps/card/card.scss";
 import Card from "../Comps/card/Card";
 import axios from "axios";
-const apiKey = "7UDoiGRdglFmoIqh7Y1eueFaSlscl787";
+const apiKey = "oS2dw2QHDL8hOYAZCUDCnrgWpJSt2GOc";
 
 export default function Favorite() {
   const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { storeLocation, storeFavorite, storeKey,isFavorite } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
+
   const [data, setData] = useState([]);
+  const navigate = useNavigate()
 
   console.log(state);
 
@@ -19,19 +29,26 @@ export default function Favorite() {
         );
       })
     );
-    console.log(results);
     setData(results.map((result) => result.data[0]));
+  };
+  const selectCity =(cityKey,cityName) => {
+    storeLocation(cityName)
+    storeKey(cityKey)
+    navigate('/')
+
   };
   useEffect(() => {
     getLocation(state.location.favoriteLocations);
+    console.log(state)
   }, []);
   return (
     <div className="Cards">
       {data &&
         data?.map((weather, index) => {
           return (
+            <div style={{marginRight:"1%"}} onClick={()=>selectCity(state.location.favoriteLocations[index].cityKey,state.location.favoriteLocations[index].cityName)}>
             <Card
-              
+            onClick={selectCity}
               key={index}
               data={{
                 Day: { Icon: weather.WeatherIcon },
@@ -43,6 +60,7 @@ export default function Favorite() {
                 cityName:state.location.favoriteLocations[index].cityName
               }}
             />
+            </div>
           );
         })}
     </div>
