@@ -1,43 +1,96 @@
-.ForecastToday {
+@media all and (min-width: 480px) {
+  .ForecastToday {
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
     box-shadow: 3px 5px 10px 1px rgba(0, 0, 0, 0.47);
     padding: 10px;
-    width: 830px;
-    height: 350px;
+    width: 800px;
+    height: fit-content;
     border-radius: 15px;
-    background-color: rgba(255,255,255, 0.4);
+    background-color: rgba(255, 255, 255, 0.7);
     margin-right: 1%;
     text-align: center;
     display: flex;
-
-    
   }
- 
-  .left{
+
+  .left {
     flex: 0.6;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .right {
+    flex: 1;
+    margin-top: 5%;
+    justify-content: center;
+    align-items: center;
+    .WeatherForecastDay {
+      font-weight: 800;
+      padding: 6px;
+      font-size: 35px;
+    }
+    .WeatherForecastTemp {
+      margin-top: 15px;
+      font-size: 22px;
+      font-weight: 400;
+    }
 
+    .WeatherForecastDescription {
+      padding-bottom: 2px;
+      font-size: 21px;
+    }
   }
-  .right{
-      flex:1;
-      margin-top: 5%;
-      justify-content: center;
-      align-items: center;
-      .WeatherForecastDay {
-        font-weight: 800;
-        padding: 6px;
-        font-size: 56px;
-      }
-      .WeatherForecastTemp {
-          margin-top: 15px;
-        font-size: 28px;
-        font-weight: 400;
-      }
- 
-      .WeatherForecastDescription {
-        padding-bottom: 2px;
-        font-size: 28px;
-      }
+}
+
+@media all and (max-width: 480px) {
+  .ForecastToday {
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 3px 5px 10px 1px rgba(0, 0, 0, 0.47);
+    width: fit-content;
+    block-size: fit-content;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin-right: 1%;
+    text-align: center;
+    display: flex;
+    transform: scale(0.8, 0.8);
+    -ms-transform: scale(0.8, 0.8); /* IE 9 */
+    -webkit-transform: scale(0.8, 0.8); /* Safari and Chrome */
+    -o-transform: scale(0.8, 0.8); /* Opera */
+    -moz-transform: scale(0.8, 0.8); /* Firefox */
   }
+
+  .left {
+    flex: 0.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .WeatherForecastIcon {
+      transform: scale(0.8, 0.8);
+      -ms-transform: scale(0.8, 0.8); /* IE 9 */
+      -webkit-transform: scale(0.8, 0.8); /* Safari and Chrome */
+      -o-transform: scale(0.8, 0.8); /* Opera */
+      -moz-transform: scale(0.8, 0.8); /* Firefox */
+    }
+  }
+  .right {
+    flex: 1;
+    margin-top: 5%;
+    justify-content: center;
+    align-items: center;
+    .WeatherForecastDay {
+      font-weight: 800;
+      padding: 6px;
+      font-size: 30px;
+    }
+    .WeatherForecastTemp {
+      margin-top: 15px;
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .WeatherForecastDescription {
+      padding-bottom: 2px;
+      font-size: 28px;
+    }
+  }
+}

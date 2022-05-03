@@ -29,6 +29,7 @@ export default function Favorite() {
         })
       );
       setData(results.map((result) => result.data[0]));
+      console.log(data)
     } catch (err) {
       console.log(err.response.message);
     }
@@ -57,7 +58,6 @@ export default function Favorite() {
               }
             >
               <Card
-                onClick={selectCity}
                 key={index}
                 data={{
                   Day: { Icon: weather.WeatherIcon },

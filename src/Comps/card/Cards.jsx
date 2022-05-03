@@ -22,9 +22,6 @@ export default function Cards() {
             const location = res.data;
             setData(location);
             setLoading(true);
-            // storeLocation(location[0].LocalizedName)
-            // storeKey(location[0].Key)
-            //setLocation({ persons });
           });
       } catch (err) {
         console.log(err.response.message);
@@ -33,15 +30,15 @@ export default function Cards() {
   };
 
   useEffect(() => {
-    // getLocation();
+     getLocation();
   }, []);
 
   useEffect(() => {
-    // getLocation();
+     getLocation();
   }, [state.location.cityKey]);
 
   return (
-    <div className="Cards">
+    <div className="Cards1">
       {data &&
         data?.DailyForecasts?.map((e, index) => {
           return <Card key={index} data={e} />;

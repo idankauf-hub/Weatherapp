@@ -5,7 +5,7 @@ import ReactAnimatedWeather from "react-animated-weather";
 export default function Card(props) {
   const [icons, setIcons] = useState();
   const [data, setData] = useState(props.data);
-
+  console.log(data)
   const ManageIcon = (iconNum) => {
     if ((iconNum >= 1 && iconNum <= 5) || iconNum == 30)
       setIcons((prevState) => ({

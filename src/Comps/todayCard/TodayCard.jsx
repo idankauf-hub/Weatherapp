@@ -152,7 +152,7 @@ export default function TodayCard() {
           <div className="WeatherForecastDay">{state.location.name}</div>
 
           <div className="WeatherForecastTemp">
-            <span>{data[0]?.Temperature.Metric.Value}🌡</span>
+            <span>{data[0]?.Temperature.Metric.Value}°</span>
           </div>
 
           <div className="WeatherForecastDescription">
@@ -161,7 +161,6 @@ export default function TodayCard() {
         </div>
         <div
           style={{
-            textAlign: "right",
             justifyContent: "center",
             alignItems: "center",
             display: "flex",

@@ -1,5 +1,44 @@
-
+@media all and (min-width: 480px) {
 .ForecastDay {
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 3px 5px 10px 1px rgba(0, 0, 0, 0.47);
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgba(255,255,255, 0.7);
+    margin-right: 1%;
+    text-align: center;
+    width: 200px;
+    height: 230px;
+    overflow:hidden
+  }
+  .WeatherForecastDay {
+    font-weight: 800;
+    padding: 6px;
+    font-size: 28px;
+  }
+
+  .WeatherForecastTemp-min {
+    font-size: 28px;
+    white-space: pre-line;
+
+  }
+  .WeatherForecastDescription {
+    padding-bottom: 2px;
+    font-size: 15px;
+    white-space: pre-line;
+
+  }
+
+  .Cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+}
+@media all and (max-width: 480px) {
+
+  .ForecastDay {
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
     box-shadow: 3px 5px 10px 1px rgba(0, 0, 0, 0.47);
     padding: 10px;
@@ -31,6 +70,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
 }
-  
+
+}

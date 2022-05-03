@@ -108,13 +108,12 @@ export default function Home() {
               sx={{
                 backgroundColor: "white",
                 borderBlock: "black",
-                width: 380,
               }}
             />
           )}
         />
 
-        <IconButton color="secondary" size="small" onClick={handleSubmit}>
+        <IconButton size="small" onClick={handleSubmit}>
           <SearchIcon />
         </IconButton>
       </div>
