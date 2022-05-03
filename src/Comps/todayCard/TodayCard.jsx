@@ -102,7 +102,6 @@ export default function TodayCard() {
       cityKey: state.location.cityKey,
       cityName: state.location.name,
     });
-    console.log(state.location);
   };
   const removeFavorite = () => {
     isFavorite(false);

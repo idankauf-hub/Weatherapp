@@ -17,7 +17,6 @@ export default function Favorite() {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
-  console.log(state);
 
   const getLocation = async (cityKeys) => {
     try {
@@ -29,7 +28,6 @@ export default function Favorite() {
         })
       );
       setData(results.map((result) => result.data[0]));
-      console.log(data)
     } catch (err) {
       console.log(err.response.message);
     }
@@ -41,7 +39,6 @@ export default function Favorite() {
   };
   useEffect(() => {
     getLocation(state.location.favoriteLocations);
-    console.log(state);
   }, []);
   return (
     <div className="Cards">

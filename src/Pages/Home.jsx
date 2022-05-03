@@ -49,7 +49,6 @@ export default function Home() {
         )
         .then((res) => {
           const location = res.data;
-          console.log(location.length);
           if (location.length > 0) {
             storeLocation(location[0].LocalizedName);
             storeKey(location[0].Key);
@@ -71,7 +70,6 @@ export default function Home() {
         )
         .then((res) => {
           const location = res.data;
-          console.log(location);
           setData(location);
         });
     } catch (err) {
@@ -85,10 +83,6 @@ export default function Home() {
           freeSolo
           id="combo-box-demo"
           options={data ? data?.map((city1) => city1.LocalizedName) : []}
-          onChange={(event, newValue) => {
-            //setLocation(newValue?.LocalizedName);
-            console.log(city);
-          }}
           inputValue={inputValue}
           onInputChange={(event, newInputValue) => {
             setInputValue(newInputValue);
