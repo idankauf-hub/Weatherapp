@@ -18,6 +18,12 @@ export const storeFavorite = (location) => {
         payload: location
         }
 }
+export const deleteFavorite = (location) => {
+    return{
+        type:"delFavorite",
+        payload: location
+        }
+}
 
 export const isFavorite = (location) => {
     return{

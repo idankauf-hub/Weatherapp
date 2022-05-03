@@ -29,12 +29,12 @@ export default function Cards() {
   };
 
   useEffect(() => {
-    getLocation();
+   // getLocation();
 
   }, []);
 
   useEffect(() => {
-    getLocation();
+   // getLocation();
   }, [state.location.cityKey]);
 
   return (
