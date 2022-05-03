@@ -9,7 +9,7 @@ import axios from "axios";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const apiKey = "oS2dw2QHDL8hOYAZCUDCnrgWpJSt2GOc";
+const apiKey = "gW5QmxlArGWpmdT9vPd1rEW6qQyAwyJH";
 
 export default function TodayCard() {
   const state = useSelector((state) => state);
@@ -20,389 +20,7 @@ export default function TodayCard() {
     icon: "CLEAR_DAY",
     color: "goldenrod",
   });
-  const [data, setData] = useState([
-    {
-      LocalObservationDateTime: "2022-05-02T14:48:00+03:00",
-      EpochTime: 1651492080,
-      WeatherText: "Mostly cloudy",
-      WeatherIcon: 6,
-      HasPrecipitation: false,
-      PrecipitationType: null,
-      IsDayTime: true,
-      Temperature: {
-        Metric: {
-          Value: 26.9,
-          Unit: "C",
-          UnitType: 17,
-        },
-        Imperial: {
-          Value: 80.0,
-          Unit: "F",
-          UnitType: 18,
-        },
-      },
-      RealFeelTemperature: {
-        Metric: {
-          Value: 28.3,
-          Unit: "C",
-          UnitType: 17,
-          Phrase: "Very Warm",
-        },
-        Imperial: {
-          Value: 83.0,
-          Unit: "F",
-          UnitType: 18,
-          Phrase: "Very Warm",
-        },
-      },
-      RealFeelTemperatureShade: {
-        Metric: {
-          Value: 25.0,
-          Unit: "C",
-          UnitType: 17,
-          Phrase: "Pleasant",
-        },
-        Imperial: {
-          Value: 77.0,
-          Unit: "F",
-          UnitType: 18,
-          Phrase: "Pleasant",
-        },
-      },
-      RelativeHumidity: 22,
-      IndoorRelativeHumidity: 22,
-      DewPoint: {
-        Metric: {
-          Value: 3.6,
-          Unit: "C",
-          UnitType: 17,
-        },
-        Imperial: {
-          Value: 39.0,
-          Unit: "F",
-          UnitType: 18,
-        },
-      },
-      Wind: {
-        Direction: {
-          Degrees: 90,
-          Localized: "E",
-          English: "E",
-        },
-        Speed: {
-          Metric: {
-            Value: 19.6,
-            Unit: "km/h",
-            UnitType: 7,
-          },
-          Imperial: {
-            Value: 12.2,
-            Unit: "mi/h",
-            UnitType: 9,
-          },
-        },
-      },
-      WindGust: {
-        Speed: {
-          Metric: {
-            Value: 33.3,
-            Unit: "km/h",
-            UnitType: 7,
-          },
-          Imperial: {
-            Value: 20.7,
-            Unit: "mi/h",
-            UnitType: 9,
-          },
-        },
-      },
-      UVIndex: 6,
-      UVIndexText: "High",
-      Visibility: {
-        Metric: {
-          Value: 16.1,
-          Unit: "km",
-          UnitType: 6,
-        },
-        Imperial: {
-          Value: 10.0,
-          Unit: "mi",
-          UnitType: 2,
-        },
-      },
-      ObstructionsToVisibility: "",
-      CloudCover: 78,
-      Ceiling: {
-        Metric: {
-          Value: 6248.0,
-          Unit: "m",
-          UnitType: 5,
-        },
-        Imperial: {
-          Value: 20500.0,
-          Unit: "ft",
-          UnitType: 0,
-        },
-      },
-      Pressure: {
-        Metric: {
-          Value: 1013.0,
-          Unit: "mb",
-          UnitType: 14,
-        },
-        Imperial: {
-          Value: 29.91,
-          Unit: "inHg",
-          UnitType: 12,
-        },
-      },
-      PressureTendency: {
-        LocalizedText: "Falling",
-        Code: "F",
-      },
-      Past24HourTemperatureDeparture: {
-        Metric: {
-          Value: 3.6,
-          Unit: "C",
-          UnitType: 17,
-        },
-        Imperial: {
-          Value: 7.0,
-          Unit: "F",
-          UnitType: 18,
-        },
-      },
-      ApparentTemperature: {
-        Metric: {
-          Value: 25.0,
-          Unit: "C",
-          UnitType: 17,
-        },
-        Imperial: {
-          Value: 77.0,
-          Unit: "F",
-          UnitType: 18,
-        },
-      },
-      WindChillTemperature: {
-        Metric: {
-          Value: 26.7,
-          Unit: "C",
-          UnitType: 17,
-        },
-        Imperial: {
-          Value: 80.0,
-          Unit: "F",
-          UnitType: 18,
-        },
-      },
-      WetBulbTemperature: {
-        Metric: {
-          Value: 14.0,
-          Unit: "C",
-          UnitType: 17,
-        },
-        Imperial: {
-          Value: 57.0,
-          Unit: "F",
-          UnitType: 18,
-        },
-      },
-      Precip1hr: {
-        Metric: {
-          Value: 0.0,
-          Unit: "mm",
-          UnitType: 3,
-        },
-        Imperial: {
-          Value: 0.0,
-          Unit: "in",
-          UnitType: 1,
-        },
-      },
-      PrecipitationSummary: {
-        Precipitation: {
-          Metric: {
-            Value: 0.0,
-            Unit: "mm",
-            UnitType: 3,
-          },
-          Imperial: {
-            Value: 0.0,
-            Unit: "in",
-            UnitType: 1,
-          },
-        },
-        PastHour: {
-          Metric: {
-            Value: 0.0,
-            Unit: "mm",
-            UnitType: 3,
-          },
-          Imperial: {
-            Value: 0.0,
-            Unit: "in",
-            UnitType: 1,
-          },
-        },
-        Past3Hours: {
-          Metric: {
-            Value: 0.0,
-            Unit: "mm",
-            UnitType: 3,
-          },
-          Imperial: {
-            Value: 0.0,
-            Unit: "in",
-            UnitType: 1,
-          },
-        },
-        Past6Hours: {
-          Metric: {
-            Value: 0.0,
-            Unit: "mm",
-            UnitType: 3,
-          },
-          Imperial: {
-            Value: 0.0,
-            Unit: "in",
-            UnitType: 1,
-          },
-        },
-        Past9Hours: {
-          Metric: {
-            Value: 0.0,
-            Unit: "mm",
-            UnitType: 3,
-          },
-          Imperial: {
-            Value: 0.0,
-            Unit: "in",
-            UnitType: 1,
-          },
-        },
-        Past12Hours: {
-          Metric: {
-            Value: 0.0,
-            Unit: "mm",
-            UnitType: 3,
-          },
-          Imperial: {
-            Value: 0.0,
-            Unit: "in",
-            UnitType: 1,
-          },
-        },
-        Past18Hours: {
-          Metric: {
-            Value: 0.0,
-            Unit: "mm",
-            UnitType: 3,
-          },
-          Imperial: {
-            Value: 0.0,
-            Unit: "in",
-            UnitType: 1,
-          },
-        },
-        Past24Hours: {
-          Metric: {
-            Value: 0.0,
-            Unit: "mm",
-            UnitType: 3,
-          },
-          Imperial: {
-            Value: 0.0,
-            Unit: "in",
-            UnitType: 1,
-          },
-        },
-      },
-      TemperatureSummary: {
-        Past6HourRange: {
-          Minimum: {
-            Metric: {
-              Value: 16.9,
-              Unit: "C",
-              UnitType: 17,
-            },
-            Imperial: {
-              Value: 62.0,
-              Unit: "F",
-              UnitType: 18,
-            },
-          },
-          Maximum: {
-            Metric: {
-              Value: 26.9,
-              Unit: "C",
-              UnitType: 17,
-            },
-            Imperial: {
-              Value: 80.0,
-              Unit: "F",
-              UnitType: 18,
-            },
-          },
-        },
-        Past12HourRange: {
-          Minimum: {
-            Metric: {
-              Value: 12.8,
-              Unit: "C",
-              UnitType: 17,
-            },
-            Imperial: {
-              Value: 55.0,
-              Unit: "F",
-              UnitType: 18,
-            },
-          },
-          Maximum: {
-            Metric: {
-              Value: 26.9,
-              Unit: "C",
-              UnitType: 17,
-            },
-            Imperial: {
-              Value: 80.0,
-              Unit: "F",
-              UnitType: 18,
-            },
-          },
-        },
-        Past24HourRange: {
-          Minimum: {
-            Metric: {
-              Value: 12.8,
-              Unit: "C",
-              UnitType: 17,
-            },
-            Imperial: {
-              Value: 55.0,
-              Unit: "F",
-              UnitType: 18,
-            },
-          },
-          Maximum: {
-            Metric: {
-              Value: 26.9,
-              Unit: "C",
-              UnitType: 17,
-            },
-            Imperial: {
-              Value: 80.0,
-              Unit: "F",
-              UnitType: 18,
-            },
-          },
-        },
-      },
-      MobileLink:
-        "http://www.accuweather.com/en/il/jerusalem/213225/current-weather/213225?lang=en-us",
-      Link: "http://www.accuweather.com/en/il/jerusalem/213225/current-weather/213225?lang=en-us",
-    },
-  ]);
+  const [data, setData] = useState([]);
 
   const ManageIcon = (iconNum) => {
     if ((iconNum >= 1 && iconNum <= 5) || iconNum == 30)
@@ -457,15 +75,19 @@ export default function TodayCard() {
 
   const getLocation = () => {
     if (state.location.cityKey != "") {
-      axios
-        .get(
-          `http://dataservice.accuweather.com/currentconditions/v1/${state.location.cityKey}?apikey=${apiKey}&language=en-us&details=true`
-        )
-        .then((res) => {
-          const location = res.data;
-          setData(location);
-          ManageIcon(location[0].WeatherIcon);
-        });
+      try {
+        axios
+          .get(
+            `http://dataservice.accuweather.com/currentconditions/v1/${state.location.cityKey}?apikey=${apiKey}&language=en-us&details=true`
+          )
+          .then((res) => {
+            const location = res.data;
+            setData(location);
+            ManageIcon(location[0].WeatherIcon);
+          });
+      } catch (err) {
+        console.log(err.response.message);
+      }
     }
   };
 
@@ -484,20 +106,22 @@ export default function TodayCard() {
   };
   const removeFavorite = () => {
     isFavorite(false);
-    const filteredItems = state.location.favoriteLocations.filter((item) => item.cityKey !== state.location.cityKey);
+    const filteredItems = state.location.favoriteLocations.filter(
+      (item) => item.cityKey !== state.location.cityKey
+    );
     deleteFavorite(filteredItems);
   };
-  const checkFavorite=()=>{
-    let res = state.location.favoriteLocations.find(location => location.cityKey === state.location.cityKey);
-    if(res)
-      isFavorite(true);
-   else
-    isFavorite(false);
+  const checkFavorite = () => {
+    let res = state.location.favoriteLocations.find(
+      (location) => location.cityKey === state.location.cityKey
+    )!== undefined;
+    if (res) isFavorite(true);
+    else isFavorite(false);
   };
 
   useEffect(() => {
     checkFavorite();
-  }, [state.location.isFavorite]);
+  }, [state.location.isFavorite,state.location.cityKey]);
   useEffect(() => {
     getLocation();
   }, []);
@@ -505,7 +129,7 @@ export default function TodayCard() {
   useEffect(() => {
     getLocation();
     if (data) {
-      ManageIcon(data[0].WeatherIcon);
+      ManageIcon(data[0]?.WeatherIcon);
     }
   }, [state.location.cityKey]);
 
@@ -528,11 +152,11 @@ export default function TodayCard() {
           <div className="WeatherForecastDay">{state.location.name}</div>
 
           <div className="WeatherForecastTemp">
-            <span>{data[0].Temperature.Metric.Value}🌡</span>
+            <span>{data[0]?.Temperature.Metric.Value}🌡</span>
           </div>
 
           <div className="WeatherForecastDescription">
-            {data[0].WeatherText}
+            {data[0]?.WeatherText}
           </div>
         </div>
         <div

@@ -4,7 +4,7 @@ import Card from "./Card";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-const apiKey = "oS2dw2QHDL8hOYAZCUDCnrgWpJSt2GOc";
+const apiKey = "gW5QmxlArGWpmdT9vPd1rEW6qQyAwyJH";
 
 export default function Cards() {
   const state = useSelector((state) => state);
@@ -13,28 +13,31 @@ export default function Cards() {
 
   const getLocation = () => {
     if (state.location.cityKey != "") {
-      axios
-        .get(
-          `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${state.location.cityKey}?apikey=${apiKey}&metric=true`
-        )
-        .then((res) => {
-          const location = res.data;
-          setData(location);
-          setLoading(true);
-          // storeLocation(location[0].LocalizedName)
-          // storeKey(location[0].Key)
-          //setLocation({ persons });
-        });
+      try {
+        axios
+          .get(
+            `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${state.location.cityKey}?apikey=${apiKey}&metric=true`
+          )
+          .then((res) => {
+            const location = res.data;
+            setData(location);
+            setLoading(true);
+            // storeLocation(location[0].LocalizedName)
+            // storeKey(location[0].Key)
+            //setLocation({ persons });
+          });
+      } catch (err) {
+        console.log(err.response.message);
+      }
     }
   };
 
   useEffect(() => {
-   // getLocation();
-
+    // getLocation();
   }, []);
 
   useEffect(() => {
-   // getLocation();
+    // getLocation();
   }, [state.location.cityKey]);
 
   return (
