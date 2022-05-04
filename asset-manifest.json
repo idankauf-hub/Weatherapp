@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/idan-kaufman-30-04-2022/static/css/main.0c49bb5c.css",
-    "main.js": "/idan-kaufman-30-04-2022/static/js/main.871e007d.js",
-    "static/js/787.d9312eb8.chunk.js": "/idan-kaufman-30-04-2022/static/js/787.d9312eb8.chunk.js",
-    "static/media/pexels-pixabay-158827.jpg": "/idan-kaufman-30-04-2022/static/media/pexels-pixabay-158827.8af2e8feea730d3f07f0.jpg",
-    "static/media/logo.svg": "/idan-kaufman-30-04-2022/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/idan-kaufman-30-04-2022/index.html",
-    "main.0c49bb5c.css.map": "/idan-kaufman-30-04-2022/static/css/main.0c49bb5c.css.map",
-    "main.871e007d.js.map": "/idan-kaufman-30-04-2022/static/js/main.871e007d.js.map",
-    "787.d9312eb8.chunk.js.map": "/idan-kaufman-30-04-2022/static/js/787.d9312eb8.chunk.js.map"
+    "main.css": "/Weatherapp/static/css/main.66539ed4.css",
+    "main.js": "/Weatherapp/static/js/main.f87f7032.js",
+    "static/js/787.d9312eb8.chunk.js": "/Weatherapp/static/js/787.d9312eb8.chunk.js",
+    "static/media/pexels-pixabay-158827.jpg": "/Weatherapp/static/media/pexels-pixabay-158827.8af2e8feea730d3f07f0.jpg",
+    "static/media/logo.svg": "/Weatherapp/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/Weatherapp/index.html",
+    "main.66539ed4.css.map": "/Weatherapp/static/css/main.66539ed4.css.map",
+    "main.f87f7032.js.map": "/Weatherapp/static/js/main.f87f7032.js.map",
+    "787.d9312eb8.chunk.js.map": "/Weatherapp/static/js/787.d9312eb8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c49bb5c.css",
-    "static/js/main.871e007d.js"
+    "static/css/main.66539ed4.css",
+    "static/js/main.f87f7032.js"
   ]
 }
