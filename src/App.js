@@ -1,12 +1,12 @@
 import logo from "./logo.svg";
 import Navbar from "./Comps/navbar/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route,HashRouter} from "react-router-dom";
 import Favorite from "./Pages/Favorite";
 import Home from "./Pages/Home";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navbar />
       <Routes>
         <Route path="/">
@@ -16,7 +16,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
