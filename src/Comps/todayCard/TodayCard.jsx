@@ -9,7 +9,7 @@ import axios from "axios";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const apiKey = "gW5QmxlArGWpmdT9vPd1rEW6qQyAwyJH";
+const apiKey = "QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ";
 
 export default function TodayCard() {
   const state = useSelector((state) => state);

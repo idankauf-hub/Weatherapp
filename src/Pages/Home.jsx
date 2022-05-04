@@ -15,7 +15,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Cards from "../Comps/card/Cards";
 import BasicModal from "../Comps/basicModal/BasicModal";
 
-const apiKey = "gW5QmxlArGWpmdT9vPd1rEW6qQyAwyJH";
+const apiKey = "QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ";
 
 export default function Home() {
   const state = useSelector((state) => state);
