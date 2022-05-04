@@ -15,7 +15,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Cards from "../Comps/card/Cards";
 import BasicModal from "../Comps/basicModal/BasicModal";
 
-const apiKey = "QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ";
+const apiKey = "79IWAWeNQTU68o0fmweoFkQeMMDPP7U9";
 
 export default function Home() {
   const state = useSelector((state) => state);
@@ -29,6 +29,7 @@ export default function Home() {
   const [data, setData] = useState(["Enter"]);
 
   const handleSubmit = () => {
+    console.log(inputValue)
     if (!/^[a-zA-Z\s]*$/.test(inputValue) || inputValue === "") {
       setError(true);
       setErrorText("Only English Letters");
@@ -100,6 +101,12 @@ export default function Home() {
               sx={{
                 backgroundColor: "white",
                 borderBlock: "black",
+              }}
+              onKeyDown={e => {
+                if(e.keyCode == 13){
+                  setInputValue(e.target.value)
+                  handleSubmit();                  // put the login here
+               }
               }}
             />
           )}

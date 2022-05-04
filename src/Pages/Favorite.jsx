@@ -6,7 +6,7 @@ import { actionCreators } from "../state/index";
 import "../Comps/card/card.scss";
 import Card from "../Comps/card/Card";
 import axios from "axios";
-const apiKey = "QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ";
+const apiKey = "79IWAWeNQTU68o0fmweoFkQeMMDPP7U9";
 
 export default function Favorite() {
   const state = useSelector((state) => state);

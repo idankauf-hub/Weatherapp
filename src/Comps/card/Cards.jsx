@@ -4,7 +4,7 @@ import Card from "./Card";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-const apiKey = "QQVXtQkqTfHcOphkeNFBmChFgdy6NjQQ";
+const apiKey = "79IWAWeNQTU68o0fmweoFkQeMMDPP7U9";
 
 export default function Cards() {
   const state = useSelector((state) => state);
