@@ -16,7 +16,7 @@ export default function Cards() {
       try {
         axios
           .get(
-            `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${state.location.cityKey}?apikey=${apiKey}&metric=true`
+            `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${state.location.cityKey}?apikey=${apiKey}&metric=true`
           )
           .then((res) => {
             const location = res.data;

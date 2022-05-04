@@ -78,7 +78,7 @@ export default function TodayCard() {
       try {
         axios
           .get(
-            `http://dataservice.accuweather.com/currentconditions/v1/${state.location.cityKey}?apikey=${apiKey}&language=en-us&details=true`
+            `https://dataservice.accuweather.com/currentconditions/v1/${state.location.cityKey}?apikey=${apiKey}&language=en-us&details=true`
           )
           .then((res) => {
             const location = res.data;

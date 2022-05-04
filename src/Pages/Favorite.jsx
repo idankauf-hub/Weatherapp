@@ -23,7 +23,7 @@ export default function Favorite() {
       const results = await Promise.all(
         cityKeys.map(({ cityKey }) => {
           return axios.get(
-            `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${apiKey}&language=en-us&details=true`
+            `https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${apiKey}&language=en-us&details=true`
           );
         })
       );

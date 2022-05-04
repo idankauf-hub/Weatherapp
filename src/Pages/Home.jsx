@@ -43,7 +43,7 @@ export default function Home() {
     try {
       axios
         .get(
-          `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${inputValue}&language=en-us`
+          `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${inputValue}&language=en-us`
         )
         .then((res) => {
           const location = res.data;
@@ -64,7 +64,7 @@ export default function Home() {
     try {
       axios
         .get(
-          `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${value}&language=en-us`
+          `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${value}&language=en-us`
         )
         .then((res) => {
           const location = res.data;
