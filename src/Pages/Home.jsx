@@ -13,7 +13,6 @@ import IconButton from "@mui/material/IconButton";
 import Autocomplete from "@mui/material/Autocomplete";
 import SearchIcon from "@mui/icons-material/Search";
 import Cards from "../Comps/card/Cards";
-import { ToastContainer, toast } from "react-toastify";
 import BasicModal from "../Comps/basicModal/BasicModal";
 
 const apiKey = "gW5QmxlArGWpmdT9vPd1rEW6qQyAwyJH";
@@ -24,7 +23,6 @@ export default function Home() {
   const { storeLocation, storeFavorite, storeKey, isFavorite } =
     bindActionCreators(actionCreators, dispatch);
 
-  const [city, setCity] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState(false);
   const [errorText, setErrorText] = useState("");
